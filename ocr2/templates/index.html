@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartGrade</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="#">SmartGrade</a></div>
+            <ul class="menu">
+                <li><a href="#Home">Home</a></li>
+                <li><a href="http://localhost:5000" target="_blank">Evaluation</a></li>
+                <li><a href="#Category">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>PDF to Text OCR Conversion</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="application/pdf" required>
+        <button type="submit">Upload and Convert</button>
+    </form>
+
+    {% if text_file_path %}
+    <a href="{{ url_for('download', text_file_path=text_file_path) }}">
+        <button>Download Text File</button>
+    </a>
+    {% endif %}
+</body>
+</html>
